@@ -1,5 +1,9 @@
 module "bootkube" {
-  source = "github.com/kinvolk/terraform-render-bootkube?ref=d07243a9e7f6084cfe08b708731a79c26146badb"
+  # After deploy, manually edit the kube-api ds to remove the cloud-provider
+  # flag. Didn't test if this works without removing it, should do it
+  # To deploy the CCM, follow instructions here:
+  # https://github.com/packethost/packet-ccm/tree/master/deploy/releases
+  source = "github.com/kinvolk/terraform-render-bootkube?ref=7d4dad01789b3bbc2d5d67094bb8a52b9c612867"
 
   cluster_name = "${var.cluster_name}"
 
@@ -20,4 +24,6 @@ module "bootkube" {
   cluster_domain_suffix = "${var.cluster_domain_suffix}"
   enable_reporting      = "${var.enable_reporting}"
   enable_aggregation    = "${var.enable_aggregation}"
+
+  cloud_provider = "external"
 }
