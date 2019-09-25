@@ -37,5 +37,6 @@ data "template_file" "configs" {
     setup_raid_hdd        = "${var.setup_raid_hdd}"
     setup_raid_ssd        = "${var.setup_raid_ssd}"
     setup_raid_ssd_fs     = "${var.setup_raid_ssd_fs}"
+    node_local_storage    = "${var.setup_raid == "true" ? "/mnt/node-local-storage" : "/mnt"}"
   }
 }
