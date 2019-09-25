@@ -46,8 +46,8 @@ systemd:
       contents: |
         [Unit]
         Description=Kubelet via Hyperkube
-        Requires=coreos-metadata.service
-        After=coreos-metadata.service
+        Requires=coreos-metadata.service persist-data-raid.service
+        After=coreos-metadata.service persist-data-raid.service
         [Service]
         EnvironmentFile=/run/metadata/flatcar
         EnvironmentFile=/etc/kubernetes/kubelet.env
@@ -62,8 +62,12 @@ systemd:
           --mount volume=opt-cni-bin,target=/opt/cni/bin \
           --volume var-log,kind=host,source=/var/log \
           --mount volume=var-log,target=/var/log \
-          --volume data,kind=host,source=${node_local_storage} \
-          --mount volume=data,target=${node_local_storage} \
+          --volume data,kind=host,source=/mnt \
+          --mount volume=data,target=/mnt \
+          --volume=devmd,kind=host,source=/dev/md \
+          --mount volume=dev,target=/dev/md \
+          --volume=etc,kind=host,source=/etc \
+          --mount volume=etc,target=/etc \
           --volume iscsiadm,kind=host,source=/usr/sbin/iscsiadm \
           --mount volume=iscsiadm,target=/usr/sbin/iscsiadm \
           --insecure-options=image"
