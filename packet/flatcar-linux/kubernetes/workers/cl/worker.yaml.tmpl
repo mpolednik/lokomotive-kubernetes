@@ -47,6 +47,7 @@ systemd:
         [Unit]
         Description=Kubelet via Hyperkube
         Requires=coreos-metadata.service
+        After=persist-data-raid.service
         After=coreos-metadata.service
         [Service]
         EnvironmentFile=/run/metadata/flatcar
