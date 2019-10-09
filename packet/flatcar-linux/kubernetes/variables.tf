@@ -67,7 +67,7 @@ variable "ipxe_script_url" {
   # It has been possible to natively install Flatcar images as official OS option on Packet,
   # but only for amd64. There is no arm64 Flatcar image available on Packet.
   # So we are not able to simply remove iPXE boot altogether.
-  default = "https://raw.githubusercontent.com/kinvolk/flatcar-ipxe-scripts/add-packet-ipxe/packet.ipxe"
+  default = "https://raw.githubusercontent.com/kinvolk/flatcar-ipxe-scripts/amd64-usr/packet.ipxe"
 
   description = "Location to load the pxe boot script from"
 }
