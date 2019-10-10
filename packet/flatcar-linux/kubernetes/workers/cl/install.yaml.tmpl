@@ -62,12 +62,17 @@ storage:
 
           os_disk="$(select_install_disk $${major_numbers})"
 
+          curl -o /tmp/Flatcar_ARM_Testing_Key.asc \
+            https://www.flatcar-linux.org/security/image-signing-key/Flatcar_ARM_Testing_Key.asc
+
           flatcar-install \
             -d "$${os_disk}" \
             -C "${os_channel}" \
             -V "${os_version}" \
             -o "${flatcar_linux_oem}" \
-            -i /opt/postinstall-ignition.json
+            -i /opt/postinstall-ignition.json \
+            -k /tmp/Flatcar_ARM_Testing_Key.asc
+
           udevadm settle
           systemctl reboot
 passwd:
