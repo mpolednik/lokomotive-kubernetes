@@ -64,6 +64,12 @@ variable "facility" {
   description = "Packet facility to deploy the cluster in"
 }
 
+variable "os_arch" {
+  type        = "string"
+  default     = "amd64"
+  description = "Flatcar Linux architecture to install (amd64, arm64)"
+}
+
 variable "os_channel" {
   type        = "string"
   default     = "stable"

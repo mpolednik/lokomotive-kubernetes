@@ -302,6 +302,7 @@ Reference the DNS zone id with `"${aws_route53_zone.zone-for-clusters.zone_id}"`
 |:-----|:------------|:--------|:--------|
 | controller_count | Number of controllers (i.e. masters) | 1 | 1 |
 | controller_type | Type of nodes to provision | "baermetal_0" | "t1.small.x86". See https://www.packet.com/developers/api/#plans for more |
+| os_arch    | Flatcar Linux architecture to install | amd64  | amd64, arm64 |
 | os_channel | Flatcar Linux channel to install from | stable | stable, beta, alpha, edge |
 | os_version | Version of a Flatcar Linux release | current | 2191.5.0 |
 | ipxe_script_url | URL that contains iPXE script to boot Flatcar on the node over PXE | https://raw.githubusercontent.com/kinvolk/flatcar-ipxe-scripts/amd64-usr/packet.ipxe |
@@ -324,6 +325,7 @@ Reference the DNS zone id with `"${aws_route53_zone.zone-for-clusters.zone_id}"`
 | count | Number of worker nodes | 1 | 3 |
 | type | Type of nodes to provision | "baremetal_0" | "t1.small.x86". See https://www.packet.com/developers/api/#plans for more |
 | labels | Comma separated labels to be added to the worker nodes | "" | "node.supernova.io/role=backend" |
+| os_arch    | Flatcar Linux architecture to install | amd64  | amd64, arm64 |
 | os_channel | Flatcar Linux channel to install from | stable | stable, beta, alpha, edge |
 | os_version | Version of a Flatcar Linux release | current | 2191.5.0 |
 | ipxe_script_url | URL that contains iPXE script to boot Flatcar on the node over PXE | https://raw.githubusercontent.com/kinvolk/flatcar-ipxe-scripts/amd64-usr/packet.ipxe | https://scripts.foobar.com/ipxe-flatcar.ipxe |
