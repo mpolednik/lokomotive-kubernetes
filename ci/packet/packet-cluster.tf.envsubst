@@ -15,7 +15,7 @@ module "controller" {
 
   ssh_keys = ["$PUB_KEY"]
 
-  asset_dir = "${pathexpand("~/assets")}"
+  asset_dir = "./lokomotive-assets"
   cluster_name = "$CLUSTER_ID"
   project_id = "$PACKET_PROJECT_ID"
 

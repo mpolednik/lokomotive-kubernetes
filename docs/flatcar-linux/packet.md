@@ -131,7 +131,7 @@ module "controller" {
     "ssh-rsa AAAAB3Nz...",
   ]
 
-  asset_dir = "/home/user/.secrets/clusters/packet"
+  asset_dir = "./assets"
 
   # Packet
   cluster_name = "supernova"
@@ -228,7 +228,7 @@ In 5-10 minutes, the Kubernetes cluster will be ready.
 [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on your system. Use the generated `kubeconfig` credentials to access the Kubernetes cluster and list nodes.
 
 ```
-$ export KUBECONFIG=/home/user/.secrets/clusters/tempest/auth/kubeconfig
+$ export KUBECONFIG=$PWD/assets/auth/kubeconfig
 $ kubectl get nodes
 NAME                       STATUS  ROLES              AGE  VERSION
 supernova-controller-0     Ready   controller,master  10m  v1.14.1
@@ -254,7 +254,7 @@ Check the [variables.tf](https://github.com/kinvolk/lokomotive-kubernetes/blob/m
 | dns_zone | AWS Route53 DNS zone | "aws.example.com" |
 | dns_zone_id | AWS Route53 DNS zone id | "Z3PAABBCFAKEC0" |
 | ssh_keys | List of SSH public keys for user 'core' | ["ssh-rsa AAAAB3NZ..."] |
-| asset_dir | Path to a directory where generated assets should be placed (contains secrets) | "/home/user/.secrets/clusters/tempest" |
+| asset_dir | Path to a directory where generated assets should be placed (contains secrets) | "./assets" |
 | project_id | Project ID obtained from the Packet account | "93fake81-0f3c1-..." |
 | facility | Packet Region in which the instance(s) should be deployed | https://www.packet.com/developers/api/#facilities. Eg: "ams1" |
 | worker_count | Total number of workers across all worker pools | 2 |
