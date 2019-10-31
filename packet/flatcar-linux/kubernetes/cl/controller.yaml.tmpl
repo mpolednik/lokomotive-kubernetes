@@ -153,6 +153,16 @@ storage:
       contents:
         inline: |
           fs.inotify.max_user_watches=16184
+    - path: /etc/systemd/system.conf
+      filesystem: root
+      contents:
+        inline: |
+          DefaultLimitNOFILE=8192:524288
+    - path: /etc/systemd/user.conf
+      filesystem: root
+      contents:
+        inline: |
+          DefaultLimitNOFILE=8192:524288
     - path: /opt/bootkube/bootkube-start
       filesystem: root
       mode: 0544
