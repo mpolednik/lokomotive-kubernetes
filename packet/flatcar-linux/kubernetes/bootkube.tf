@@ -24,16 +24,12 @@ module "bootkube" {
   certs_validity_period_hours = "${var.certs_validity_period_hours}"
 
   container_images = {
-    calico           = "quay.io/calico/node:v3.9.2-${var.os_arch}"
-    calico_cni       = "quay.io/calico/cni:v3.9.2-${var.os_arch}"
-    flannel          = "quay.io/coreos/flannel:v0.11.0-${var.os_arch}"
-    # only amd64 images available for quay.io/coreos/flannel-cni
-    flannel_cni      = "quay.io/coreos/flannel-cni:v0.3.0"
+    calico           = "calico/node:v3.9.2"
+    calico_cni       = "calico/cni:v3.9.2"
     # only amd64 images available for cloudnativelabs/kube-router
-    kube_router      = "cloudnativelabs/kube-router:v0.3.2"
-    hyperkube        = "k8s.gcr.io/hyperkube-${var.os_arch}:v1.16.2"
+    hyperkube        = "k8s.gcr.io/hyperkube:v1.16.2"
     # coredns/coredns does not support an arch-specific tag for each version
     coredns          = "coredns/coredns:coredns-${var.os_arch}"
-    pod_checkpointer = "quay.io/kinvolk/pod-checkpointer:83e25e5968391b9eb342042c435d1b3eeddb2be1-${var.os_arch}"
+    pod_checkpointer = "kinvolk/pod-checkpointer:83e25e5968391b9eb342042c435d1b3eeddb2be1"
   }
 }
